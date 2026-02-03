@@ -1,210 +1,195 @@
+<div align="center">
+
+<img src="img/logo.png" alt="AutoFigure Logo" width="500"/>
+
 # AutoFigure
+**AI-Powered Scientific Figure Generation**
 
-**AI-powered Scientific Figure Generation**
+[![ICLR 2026](https://img.shields.io/badge/ICLR-2026-blue?style=for-the-badge&logo=openreview)](https://openreview.net/forum?id=5N3z9JQJKq)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![HuggingFace](https://img.shields.io/badge/%F0%9F%A4%97%20HuggingFace-FigureBench-orange?style=for-the-badge)](https://huggingface.co/datasets/WestlakeNLP/FigureBench)
 
-AutoFigure is an intelligent system that automatically generates high-quality scientific figures from text descriptions or research papers. It uses large language models (LLMs) with iterative refinement to create publication-ready diagrams.
+<p align="center">
+  <strong>From Text to Publication-Ready Diagrams</strong><br>
+  AutoFigure is an intelligent system that leverages Large Language Models (LLMs) with iterative refinement to generate high-quality scientific figures from text descriptions or research papers.
+</p>
 
-## Features
+[Quick Start](#-quick-start) • [Web Interface](#-web-interface) • [FigureBench](#-figurebench-dataset) • [Citation](#-citation)
 
-- **Text-to-Figure**: Generate figures from natural language descriptions
-- **Paper-to-Figure**: Extract methodology from PDFs and create visual diagrams
-- **Iterative Refinement**: Two-agent system (Improvement + Evaluation) for quality optimization
-- **Multiple Formats**: Output as SVG or mxGraph XML (draw.io compatible)
-- **Image Enhancement**: Optional AI-powered image beautification
-- **Web Interface**: Interactive frontend for figure generation and editing
+</div>
 
-## Project Structure
+---
 
-```
-AutoFigure/
-├── autofigure/              # Python SDK (pip installable)
-│   ├── agent.py                   # AutoFigureAgent class
-│   ├── config.py                  # Configuration
-│   ├── generator.py               # Core generation pipeline
-│   ├── enhancer.py                # Image enhancement
-│   ├── extractor.py               # Methodology extraction
-│   ├── references/                # Reference figures for style
-│   └── utils/                     # Utility modules
-├── frontend/                # Web interface (Next.js)
-├── backend/                 # API server (Flask)
-├── scripts/                 # Utility scripts
-├── pyproject.toml           # Package configuration
-└── requirements.txt         # Dependencies
-```
+## ✨ Features
 
-## Quick Start
+| Feature | Description |
+| :--- | :--- |
+| 📝 **Text-to-Figure** | Generate figures directly from natural language descriptions. |
+| 📄 **Paper-to-Figure** | Extract methodology from PDFs and create visual diagrams automatically. |
+| 🔄 **Iterative Refinement** | Dual-agent system (Generation + Evaluation) for continuous quality optimization. |
+| 🎨 **Multiple Formats** | Output as **SVG** or **mxGraph XML** (fully compatible with draw.io). |
+| 💅 **Image Enhancement** | Optional AI-powered post-processing for aesthetic beautification. |
+| 🖥️ **Web Interface** | Interactive Next.js frontend for easy generation and editing. |
+
+---
+
+## 🚀 How It Works
+
+AutoFigure employs a **Review-Refine** loop to ensure high accuracy and aesthetic quality.
+
+<div align="center">
+<img src="img/method.png" alt="AutoFigure method" width="1000"/>
+</div>
+
+> **Process:**
+> 1. **Generate:** The agent creates initial SVG/XML based on description & references.
+> 2. **Evaluate:** The critic scores quality (0-10) and provides specific feedback.
+> 3. **Refine:** The loop continues until the figure meets publication standards.
+
+---
+
+## ⚡ Quick Start
 
 ### Option 1: Python SDK (Recommended)
 
+<details>
+<summary><strong>Click to view Installation Steps</strong></summary>
+
 ```bash
-# Clone the repository
+# 1. Clone the repository
 git clone https://github.com/ResearAI/AutoFigure.git
 cd AutoFigure
 
-# Install dependencies
+# 2. Install dependencies & package
 pip install -r requirements.txt
-
-# Install AutoFigure in development mode
 pip install -e .
 
-# Install Playwright browser (required for mxGraph XML to PNG conversion)
+# 3. Install Playwright (required for rendering)
 playwright install chromium
 ```
-
-**Verify Installation:**
-
-```python
-from autofigure import AutoFigureAgent, Config
-print("AutoFigure installed successfully!")
-```
+</details>
 
 **Basic Usage:**
 
 ```python
 from autofigure import AutoFigureAgent, Config
 
-# Configure
+# 1. Configure
 config = Config(
     generation_api_key="your-api-key",
-    generation_provider="openrouter",  # or 'gemini', 'bianxie'
+    generation_provider="openrouter",  # options: 'openrouter', 'gemini', 'bianxie'
 )
 
-# Generate
+# 2. Generate
 agent = AutoFigureAgent(config)
 result = agent.generate(
     description="A flowchart showing transformer training pipeline",
     max_iterations=5,
-    output_format="svg",  # 'svg' or 'mxgraphxml'
+    output_format="svg"
 )
 
-print(f"Generated: {result.svg_path}")
-print(f"Score: {result.final_score}/10")
+print(f"✅ Generated: {result.svg_path} (Score: {result.final_score}/10)")
 ```
 
 ### Option 2: Web Interface
 
+Ideally suited for visual interaction and editing.
+
 ```bash
-# Clone the repository
-git clone https://github.com/ResearAI/AutoFigure.git
-cd AutoFigure
-
-# Install backend dependencies
-cd backend
-pip install -r requirements.txt
-playwright install chromium
-cd ..
-
-# Install frontend dependencies
-cd frontend
-npm install
-cd ..
-
-# Start both servers (Linux/macOS)
 ./start.sh
-
-# Or start manually (Windows)
-# Terminal 1: cd backend && python app.py
-# Terminal 2: cd frontend && npm run dev
+# Then open http://localhost:6002 in your browser
 ```
 
-Open http://localhost:6002 in your browser.
+---
 
-## Configuration
+## 📊 FigureBench Dataset
 
-### LLM Providers
+We introduce **FigureBench**, the first large-scale benchmark for generating scientific illustrations from long-form text.
 
-AutoFigure supports multiple LLM providers:
+### Dataset Overview
 
-| Provider | Base URL | Models |
-|----------|----------|--------|
-| OpenRouter | `https://openrouter.ai/api/v1` | claude-sonnet-4, gpt-4o, etc. |
-| Bianxie | `https://api.bianxie.ai/v1` | gemini-2.5-pro |
-| Google Gemini | `https://generativelanguage.googleapis.com/v1beta/openai/` | gemini-2.5-pro |
+| Category | Samples | Avg. Tokens | Text Density | Complexity |
+|:---|:---:|:---:|:---:|:---:|
+| 📄 **Paper** | 3,200 | 12,732 | 42.1% | High |
+| 📝 **Blog** | 20 | 4,047 | 46.0% | Med |
+| 📊 **Survey** | 40 | 2,179 | 43.8% | High |
+| 📘 **Textbook** | 40 | 352 | 25.0% | Low |
+| **Total** | **3,300** | **10k+** | **41.2%** | **~5.3 Components** |
 
-### Environment Variables
+### Download
+<div align="left">
+  <a href="https://huggingface.co/datasets/WestlakeNLP/FigureBench">
+    <img src="https://img.shields.io/badge/%F0%9F%A4%97%20Download%20on%20HuggingFace-FFD21E?style=for-the-badge&logoColor=black" alt="Download">
+  </a>
+</div>
+
+```python
+from datasets import load_dataset
+dataset = load_dataset("WestlakeNLP/FigureBench")
+```
+
+---
+
+## ⚙️ Configuration
+
+### Supported LLM Providers
+
+| Provider | Base URL | Recommended Models |
+|----------|----------|--------------------|
+| **OpenRouter** | `openrouter.ai/api/v1` | `claude-sonnet-4`, `gpt-4o` |
+| **Bianxie** | `api.bianxie.ai/v1` | `gemini-2.5-pro` |
+| **Google** | `generativelanguage...` | `gemini-2.5-pro` |
+
+Set up your environment variables:
 
 ```bash
 export AUTOFIGURE_API_KEY="your-api-key"
 export AUTOFIGURE_PROVIDER="openrouter"
 export AUTOFIGURE_MODEL="anthropic/claude-sonnet-4"
-export AUTOFIGURE_MAX_ITERATIONS="5"
 ```
+Recommend using gemini-2.5-pro/gemini-3-pro-preview
 
-## FigureBench Dataset
+---
 
-AutoFigure includes **FigureBench**, the first large-scale benchmark for generating scientific illustrations from long-form scientific texts.
+## 📁 Project Structure
 
-### Dataset Highlights
-
-| Category | Samples | Avg. Text Tokens | Text Density (%) | Components | Colors | Shapes |
-|----------|---------|------------------|------------------|------------|--------|--------|
-| Paper | 3,200 | 12,732 | 42.1 | 5.4 | 6.4 | 6.7 |
-| Blog | 20 | 4,047 | 46.0 | 4.2 | 5.5 | 5.3 |
-| Survey | 40 | 2,179 | 43.8 | 5.8 | 7.0 | 6.7 |
-| Textbook | 40 | 352 | 25.0 | 4.5 | 4.2 | 3.4 |
-| **Total/Avg** | **3,300** | **10,300** | **41.2** | **5.3** | **6.2** | **6.4** |
-
-### Key Challenges
-
-- **Long-context reasoning**: Text tokens vary from 352 (textbooks) to 12,732 (papers)
-- **High text density**: Average 41.2% of image area occupied by text
-- **Structural complexity**: Average 5.3 components and 6.4 shapes per illustration
-
-### Download Dataset
-
-The dataset is hosted on HuggingFace. Download using one of these methods:
-
-**Option 1: Download Script**
-
-```bash
-python scripts/download_figurebench.py
-```
-
-**Option 2: HuggingFace Datasets**
-
-```python
-from datasets import load_dataset
-
-dataset = load_dataset("WestlakeNLP/FigureBench")
-sample = dataset["train"][0]
-```
-
-**Option 3: HuggingFace CLI**
-
-```bash
-huggingface-cli download WestlakeNLP/FigureBench --repo-type dataset --local-dir figurebench
-```
-
-For detailed documentation, visit [HuggingFace](https://huggingface.co/datasets/WestlakeNLP/FigureBench).
-
-## How It Works
-
-AutoFigure uses a two-agent iterative refinement process:
-
-1. **Generation Agent**: Creates initial figure code (SVG/mxGraph XML) based on the description and reference figures
-
-2. **Evaluation Agent**: Scores the figure quality (0-10) and provides improvement suggestions
-
-3. **Iteration**: The generation agent refines the figure based on feedback until the quality threshold is met or max iterations reached
+<details>
+<summary>Click to expand directory tree</summary>
 
 ```
-Description → Generate → Evaluate → Improve → Evaluate → ... → Final Figure
-                ↑                      |
-                +----------------------+
+AutoFigure/
+├── autofigure/              # 📦 Python SDK
+│   ├── agent.py             # Main Agent
+│   ├── generator.py         # Generation Pipeline
+│   ├── enhancer.py          # Image Enhancement
+│   └── extractor.py         # PDF Method Extraction
+├── frontend/                # 🖥️ Next.js Web UI
+├── backend/                 # 🔌 Flask API Server
+├── scripts/                 # 🛠️ Utility Scripts
+└── pyproject.toml           # Config
 ```
+</details>
 
-## License
+---
 
-MIT License - see [LICENSE](LICENSE) for details.
+## 🤝 Community & Support
 
-## Citation
+**WeChat Discussion Group**  
+Scan the QR code to join our community. If the code is expired, please contact `tuchuan@mail.hfut.edu.cn`.
 
-If you use AutoFigure or FigureBench in your research, please cite:
+<img src="img/wechat.jpg" width="200" alt="WeChat QR Code"/>
+
+---
+
+## 📜 Citation & License
+
+If you use **AutoFigure** or **FigureBench** in your research, please cite:
 
 ```bibtex
 @software{autofigure2025,
   title = {AutoFigure: Generating and Refining Publication-Ready Scientific Illustrations},
-  author={Minjun Zhu, Zhen Lin, Yixuan Weng, Panzhong Lu, Qiujie Xie, Yifan Wei, Yifan_Wei, Sifan Liu, QiYao Sun, Yue Zhang}
+  author={Minjun Zhu and Zhen Lin and Yixuan Weng and Panzhong Lu and Qiujie Xie and Yifan Wei and Yifan_Wei and Sifan Liu and QiYao Sun and Yue Zhang},
   year = {2025},
   url = {https://github.com/ResearAI/AutoFigure}
 }
@@ -215,8 +200,3 @@ If you use AutoFigure or FigureBench in your research, please cite:
   year = {2025},
   url = {https://huggingface.co/datasets/WestlakeNLP/FigureBench}
 }
-```
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit issues and pull requests.
