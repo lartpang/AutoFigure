@@ -2,8 +2,8 @@
 
 <img src="img/logo.png" alt="AutoFigure Logo" width="100%"/>
 
-# AutoFigure
-**AI-Powered Scientific Figure Generation**
+
+# AutoFigure: Generating and Refining Publication-Ready Scientific Illustrations [ICLR 2026]
 
 [![ICLR 2026](https://img.shields.io/badge/ICLR-2026-blue?style=for-the-badge&logo=openreview)](https://openreview.net/forum?id=5N3z9JQJKq)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
