@@ -107,6 +107,10 @@ Ideally suited for visual interaction and editing.
 
 We introduce **FigureBench**, the first large-scale benchmark for generating scientific illustrations from long-form text.
 
+<div align="center">
+<img src="img/figurebench.png" alt="figurebench" width="1000"/>
+</div>
+
 ### Dataset Overview
 
 | Category | Samples | Avg. Tokens | Text Density | Complexity |
