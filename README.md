@@ -191,16 +191,12 @@ Scan the QR code to join our community. If the code is expired, please contact `
 If you use **AutoFigure** or **FigureBench** in your research, please cite:
 
 ```bibtex
-@software{autofigure2025,
-  title = {AutoFigure: Generating and Refining Publication-Ready Scientific Illustrations},
-  author={Minjun Zhu and Zhen Lin and Yixuan Weng and Panzhong Lu and Qiujie Xie and Yifan Wei and Yifan_Wei and Sifan Liu and QiYao Sun and Yue Zhang},
-  year = {2025},
-  url = {https://github.com/ResearAI/AutoFigure}
+@inproceedings{
+zhu2026autofigure,
+title={AutoFigure: Generating and Refining Publication-Ready Scientific Illustrations},
+author={Minjun Zhu and Zhen Lin and Yixuan Weng and Panzhong Lu and Qiujie Xie and Yifan Wei and Sifan Liu and Qiyao Sun and Yue Zhang},
+booktitle={The Fourteenth International Conference on Learning Representations},
+year={2026},
+url={https://openreview.net/forum?id=5N3z9JQJKq}
 }
-
-@dataset{figurebench2025,
-  title = {FigureBench: A Benchmark for Automated Scientific Illustration Generation},
-  author = {WestlakeNLP},
-  year = {2025},
-  url = {https://huggingface.co/datasets/WestlakeNLP/FigureBench}
-}
+```
