@@ -206,7 +206,7 @@ AutoFigure is highly configurable. You can set these in `Config()` or via enviro
 
 | Provider | Base URL | Recommended Models |
 |----------|----------|--------------------|
-| **OpenRouter** | `openrouter.ai/api/v1` | `claude-sonnet-4`, `gpt-4o` |
+| **OpenRouter** | `openrouter.ai/api/v1` | `gemini-2.5-pro` |
 | **Bianxie** | `api.bianxie.ai/v1` | `gemini-2.5-pro` |
 | **Google** | `generativelanguage...` | `gemini-2.5-pro` |
 
