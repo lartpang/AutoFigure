@@ -21,6 +21,11 @@
 </div>
 
 ---
+
+
+https://github.com/user-attachments/assets/d0c954a9-9cf3-4c8b-8b04-71d75a68854c
+
+
 ## 🔥 News
 
 - **[2026.03.24]** 🧠 Our sister project **DeepScientist v1.5** is now officially released. It is a local-first open-source autonomous research system for end-to-end scientific discovery. Explore it on [GitHub](https://github.com/ResearAI/DeepScientist) or read the [ICLR 2026 paper](https://openreview.net/forum?id=cZFgsLq8Gs).
