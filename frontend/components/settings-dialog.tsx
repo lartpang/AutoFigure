@@ -266,7 +266,7 @@ export function SettingsDialog({
                                                     : provider === "anthropic"
                                                       ? "e.g., claude-sonnet-4-5"
                                                       : provider === "google"
-                                                        ? "e.g., gemini-2.0-flash-exp"
+                                                        ? "e.g., gemini-3.1-pro-preview"
                                                         : provider ===
                                                             "deepseek"
                                                           ? "e.g., deepseek-chat"

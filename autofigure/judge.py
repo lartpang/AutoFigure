@@ -57,7 +57,7 @@ def _call_provider_unified(contents: list, provider: str,
                 part.save(buf, format='PNG')
                 image_b64 = _b64.b64encode(buf.getvalue()).decode('utf-8')
                 content_parts.append({'type': 'image_url', 'image_url': {'url': f'data:image/png;base64,{image_b64}'}})
-        completion = client.chat.completions.create(model=model or 'claude-sonnet-4-20250514', messages=[{
+        completion = client.chat.completions.create(model=model or 'google/gemini-3.1-pro-preview', messages=[{
             'role': 'user', 'content': content_parts
         }])
         return completion.choices[0].message.content if completion and completion.choices else None
@@ -114,7 +114,7 @@ def call_google_genai_multimodal(contents: List, api_key: str = None, retry_coun
 
         # Call the API
         response = client.models.generate_content(
-            model="gemini-2.5-flash",
+            model="gemini-3.1-pro-preview",
             contents=api_contents
         )
         

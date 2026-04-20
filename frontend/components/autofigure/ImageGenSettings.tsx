@@ -65,20 +65,20 @@ export default function ImageGenSettings({
         if (localConfig.provider === 'openrouter') {
             return {
                 apiKey: 'Enter your OpenRouter API key',
-                model: 'e.g., google/gemini-3-pro-image-preview',
+                model: 'e.g., google/gemini-3.1-flash-image-preview',
                 baseUrl: 'https://openrouter.ai/api/v1',
             }
         }
         if (localConfig.provider === 'gemini') {
             return {
                 apiKey: 'Enter your Google AI API key',
-                model: 'e.g., gemini-3-pro-image-preview',
+                model: 'e.g., gemini-3.1-flash-image-preview',
                 baseUrl: 'https://generativelanguage.googleapis.com/v1beta',
             }
         }
         return {
             apiKey: 'Enter your Bianxie API key',
-            model: 'e.g., gemini-3-pro-image-preview',
+            model: 'e.g., gemini-3.1-flash-image-preview',
             baseUrl: 'https://api.bianxie.ai/v1/chat/completions',
         }
     }

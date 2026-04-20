@@ -27,7 +27,7 @@ class LLMClient:
         self,
         api_key: str,
         base_url: str = "https://openrouter.ai/api/v1",
-        model: str = "anthropic/claude-sonnet-4",
+        model: str = "google/gemini-3.1-pro-preview",
         provider: str = "openrouter",
     ):
         """

@@ -566,7 +566,7 @@ Transform the provided layout into this enhanced visualization now."""
                 return None
 
             if not model:
-                model = "gemini-2.5-flash-image-preview"
+                model = "gemini-3.1-flash-image-preview"
 
             actual_base_url = base_url or "https://api.bianxie.ai/v1/chat/completions"
             if not actual_base_url.endswith("/chat/completions"):
@@ -649,7 +649,7 @@ Transform the provided layout into this enhanced visualization now."""
                 return None
 
             if not model:
-                model = "google/gemini-2.0-flash-exp:free"
+                model = "google/gemini-3.1-flash-image-preview"
 
             actual_base_url = base_url or "https://openrouter.ai/api/v1"
             if not actual_base_url.endswith("/chat/completions"):
@@ -732,7 +732,7 @@ Transform the provided layout into this enhanced visualization now."""
                 return None
 
             if not model:
-                model = "gemini-2.0-flash-exp"
+                model = "gemini-3.1-flash-image-preview"
 
             # Construct Gemini API URL
             if not base_url:

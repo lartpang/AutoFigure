@@ -309,7 +309,7 @@ export default function AutoFigureConfigPanel({ onStart }: AutoFigureConfigPanel
                                             type="text"
                                             value={config.methodologyLlmModel}
                                             onChange={e => updateConfig({ methodologyLlmModel: e.target.value })}
-                                            placeholder="Enter model name (e.g., gemini-2.5-flash)"
+                                            placeholder="Enter model name (e.g., gemini-3.1-pro-preview)"
                                             className="w-full px-3 py-2 bg-slate-900/50 border border-slate-600 rounded-lg text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-yellow-500"
                                         />
                                     </div>
@@ -369,11 +369,11 @@ export default function AutoFigureConfigPanel({ onStart }: AutoFigureConfigPanel
                                 type="text"
                                 value={config.model}
                                 onChange={e => updateConfig({ model: e.target.value })}
-                                placeholder="Enter model name (e.g., gemini-2.5-pro)"
+                                placeholder="Enter model name (e.g., gemini-3.1-pro-preview)"
                                 className="w-full px-3 py-2 bg-slate-900/50 border border-slate-600 rounded-lg text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500"
                             />
                             <p className="mt-1 text-xs text-slate-500">
-                                Examples: gemini-2.5-pro, gemini-2.5-flash
+                                Examples: gemini-3.1-pro-preview, google/gemini-3.1-pro-preview
                             </p>
                         </div>
 

@@ -98,7 +98,7 @@ from autofigure import AutoFigureAgent, Config
 config = Config(
     generation_api_key="your-api-key",
     generation_provider="openrouter",  # options: 'openrouter', 'gemini', 'bianxie'
-    generation_model="google/gemini-2.5-pro",
+    generation_model="google/gemini-3.1-pro-preview",
 )
 
 # 2. Generate
@@ -198,11 +198,11 @@ AutoFigure is highly configurable. You can set these in `Config()` or via enviro
 
 ### Supported LLM Providers
 
-| Provider | Base URL | Recommended Models |
-|----------|----------|--------------------|
-| **OpenRouter** | `openrouter.ai/api/v1` | `gemini-2.5-pro` |
-| **Bianxie** | `api.bianxie.ai/v1` | `gemini-2.5-pro` |
-| **Google** | `generativelanguage...` | `gemini-2.5-pro` |
+| Provider | Base URL | Recommended Text / SVG Model | Recommended Image Model |
+|----------|----------|------------------------------|-------------------------|
+| **OpenRouter** | `openrouter.ai/api/v1` | `google/gemini-3.1-pro-preview` | `google/gemini-3.1-flash-image-preview` |
+| **Bianxie** | `api.bianxie.ai/v1` | `gemini-3.1-pro-preview` | `gemini-3.1-flash-image-preview` |
+| **Google** | `generativelanguage...` | `gemini-3.1-pro-preview` | `gemini-3.1-flash-image-preview` |
 
 ### Generation Settings
 
@@ -350,10 +350,14 @@ url={https://openreview.net/forum?id=5N3z9JQJKq}
 }
 ```
 
+Repository metadata and usage guidance:
+
+- [CITATION.cff](./CITATION.cff)
+- [Citation and attribution guidance](./docs/en/26_CITATION_AND_ATTRIBUTION.md)
+- [Name and logo usage](./TRADEMARK.md)
+
 This project is licensed under the MIT License - see `LICENSE` for details.
-
-
-
+Name and logo usage are covered separately in `TRADEMARK.md`.
 
 ---
 
@@ -368,9 +372,8 @@ Explore more open-source research tools from ResearAI:
 | [DeepReviewer-v2](https://github.com/ResearAI/DeepReviewer-v2) | review papers and drafts |
 | [Awesome-AI-Scientist](https://github.com/ResearAI/Awesome-AI-Scientist) | curated AI scientist landscape |
 
-
 ---
 
-The optimal configuration for this project uses `gemini-3.1-flash-image-preview` from Google AI Studio [[https://aistudio.google.com/](https://aistudio.google.com/)] as the image generation model and `gemini-3.1-pro-preview` as the Text model. Each run costs approximately $0.50, consumes about 30,000 tokens, and takes around 20 minutes. 
+The optimal configuration for this project uses `gemini-3.1-flash-image-preview` from Google AI Studio [[https://aistudio.google.com/](https://aistudio.google.com/)] as the image generation model and `gemini-3.1-pro-preview` as the Text model. Each run costs approximately $0.50, consumes about 30,000 tokens, and takes around 20 minutes.
 
 [Mainland China Notice] Gemini's Terms of Service do not permit access or usage by users in mainland China. If OpenRouter throws an error, it is often because an account registered in mainland China lacks the necessary permissions to use Gemini. It is recommended to use an OpenRouter account registered in the United States or Europe and to ensure compliant usage.

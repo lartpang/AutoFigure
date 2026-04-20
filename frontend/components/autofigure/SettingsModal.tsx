@@ -147,10 +147,10 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                                                         value={config.methodologyLlmModel}
                                                         onChange={e => updateConfig({ methodologyLlmModel: e.target.value })}
                                                         placeholder={config.methodologyLlmProvider === 'openrouter'
-                                                            ? 'e.g., google/gemini-2.5-flash'
+                                                            ? 'e.g., google/gemini-3.1-pro-preview'
                                                             : config.methodologyLlmProvider === 'gemini'
-                                                            ? 'e.g., gemini-2.5-flash'
-                                                            : 'e.g., gemini-2.5-flash'}
+                                                            ? 'e.g., gemini-3.1-pro-preview'
+                                                            : 'e.g., gemini-3.1-pro-preview'}
                                                     />
                                                 </div>
                                             </div>
@@ -242,10 +242,10 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                                         value={config.model}
                                         onChange={e => updateConfig({ model: e.target.value })}
                                         placeholder={config.llmProvider === 'openrouter'
-                                            ? 'e.g., google/gemini-3-pro-preview'
+                                            ? 'e.g., google/gemini-3.1-pro-preview'
                                             : config.llmProvider === 'gemini'
-                                            ? 'e.g., gemini-3-pro-preview'
-                                            : 'e.g., gemini-3-pro-preview'}
+                                            ? 'e.g., gemini-3.1-pro-preview'
+                                            : 'e.g., gemini-3.1-pro-preview'}
                                     />
                                 </div>
                             </div>

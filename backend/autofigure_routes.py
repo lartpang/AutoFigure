@@ -56,7 +56,7 @@ def extract_methodology(markdown_content: str, config: Dict[str, Any]) -> Option
         # Support both camelCase (from frontend) and snake_case formats
         provider = config.get('methodologyLlmProvider') or config.get('methodology_llm_provider', 'bianxie')
         api_key = config.get('methodologyLlmApiKey') or config.get('methodology_llm_api_key', '')
-        model = config.get('methodologyLlmModel') or config.get('methodology_llm_model', 'gemini-2.5-flash')
+        model = config.get('methodologyLlmModel') or config.get('methodology_llm_model', 'gemini-3.1-pro-preview')
         base_url = config.get('methodologyLlmBaseUrl') or config.get('methodology_llm_base_url', '')
 
         if not api_key:
@@ -231,9 +231,9 @@ def reset_autofigure_config():
     AUTOFIGURE_CONFIG['CLAUDE_BASE_URL'] = ''
 
     # Reset model configurations
-    AUTOFIGURE_CONFIG['BIANXIE_CHAT_MODEL'] = 'gemini-2.5-pro'
-    AUTOFIGURE_CONFIG['OPENROUTER_MODEL'] = ''
-    AUTOFIGURE_CONFIG['GEMINI_MODEL'] = ''
+    AUTOFIGURE_CONFIG['BIANXIE_CHAT_MODEL'] = 'gemini-3.1-pro-preview'
+    AUTOFIGURE_CONFIG['OPENROUTER_MODEL'] = 'google/gemini-3.1-pro-preview'
+    AUTOFIGURE_CONFIG['GEMINI_MODEL'] = 'gemini-3.1-pro-preview'
     AUTOFIGURE_CONFIG['CLAUDE_MODEL'] = ''
     AUTOFIGURE_CONFIG['AIGCBEST_CHAT_MODEL'] = ''
 
@@ -306,7 +306,7 @@ def create_session():
                 'methodology_llm_provider': config.get('methodologyLlmProvider', 'bianxie'),
                 'methodology_llm_api_key': config.get('methodologyLlmApiKey', ''),
                 'methodology_llm_base_url': config.get('methodologyLlmBaseUrl', ''),
-                'methodology_llm_model': config.get('methodologyLlmModel', 'gemini-2.5-flash'),
+                'methodology_llm_model': config.get('methodologyLlmModel', 'gemini-3.1-pro-preview'),
                 # Enhancement configuration
                 'enhancement_mode': config.get('enhancementMode', 'text2image_prompt'),
                 'art_style': config.get('artStyle', ''),  # User must provide custom art style
@@ -858,7 +858,7 @@ def start_enhancement(session_id: str):
             'provider': data.get('enhancement_llm_provider', 'bianxie'),
             'api_key': data.get('enhancement_llm_api_key', ''),
             'base_url': data.get('enhancement_llm_base_url', ''),
-            'model': data.get('enhancement_llm_model', 'gemini-2.5-pro'),
+            'model': data.get('enhancement_llm_model', 'gemini-3.1-pro-preview'),
         }
 
         # User-provided image generation config (required)
@@ -1084,7 +1084,7 @@ def _run_enhancement(session_id: str, final_xml: str, mode: str, art_style: str,
         llm_provider = enhancement_llm_config.get('provider', 'bianxie')
         llm_api_key = enhancement_llm_config.get('api_key', '')
         llm_base_url = enhancement_llm_config.get('base_url', '')
-        llm_model = enhancement_llm_config.get('model', 'gemini-2.5-pro')
+        llm_model = enhancement_llm_config.get('model', 'gemini-3.1-pro-preview')
 
         # Set default base URL for LLM if not specified
         if not llm_base_url:
@@ -1280,7 +1280,7 @@ def generate_image():
         prompt: Text description of the image to generate
         provider: API provider ('bianxie' or 'openrouter')
         api_key: User's API key (required)
-        model: Model name (required, e.g., gemini-3-pro-image-preview)
+        model: Model name (required, e.g., gemini-3.1-flash-image-preview)
         base_url: API base URL (required, e.g., https://api.bianxie.ai/v1/chat/completions)
 
     Returns:
@@ -1465,7 +1465,7 @@ def _generate_image_openrouter(prompt: str, api_key: str, model: str, base_url: 
     """
     Generate image using OpenRouter API.
 
-    Based on OpenRouter API documentation (https://openrouter.ai/google/gemini-3-pro-image-preview/api):
+    Based on OpenRouter API documentation (https://openrouter.ai/google/gemini-3.1-flash-image-preview/api):
     - Requires modalities: ["image", "text"] for image generation
     - Images returned in message.images array as: image['image_url']['url'] (data URL format)
 

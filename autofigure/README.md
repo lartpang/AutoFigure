@@ -45,7 +45,7 @@ from autofigure import AutoFigureAgent, Config
 config = Config(
     generation_api_key="your-openrouter-api-key",
     generation_provider="openrouter",  # or 'bianxie', 'gemini'
-    generation_model="google/gemini-2.5-pro",
+    generation_model="google/gemini-3.1-pro-preview",
 )
 
 # Create agent
@@ -76,12 +76,12 @@ from autofigure import AutoFigureAgent, Config
 
 config = Config(
     generation_api_key="your-api-key",
-    generation_model="google/gemini-2.5-pro",
+    generation_model="google/gemini-3.1-pro-preview",
 
     # Methodology extraction settings (optional, defaults to generation settings)
     methodology_api_key="your-methodology-api-key",
     methodology_provider="openrouter",
-    methodology_model="google/gemini-2.5-pro",
+    methodology_model="google/gemini-3.1-pro-preview",
 )
 
 agent = AutoFigureAgent(config)
@@ -105,7 +105,7 @@ You can also override methodology settings at call time:
 result = agent.generate_from_paper(
     paper_path="./paper.pdf",
     methodology_api_key="different-api-key",  # Override config
-    methodology_model="anthropic/claude-sonnet-4",
+    methodology_model="google/gemini-3.1-pro-preview",
 )
 ```
 
@@ -118,12 +118,12 @@ from autofigure import AutoFigureAgent, Config
 
 config = Config(
     generation_api_key="your-api-key",
-    generation_model="google/gemini-2.5-pro",
+    generation_model="google/gemini-3.1-pro-preview",
 
     # Enhancement settings
     enhancement_api_key="your-enhancement-api-key",
     enhancement_provider="openrouter",
-    enhancement_model="google/gemini-3-pro-image-preview",
+    enhancement_model="google/gemini-3.1-flash-image-preview",
     enhancement_input_type="code2prompt",  # 'none', 'code', 'code2prompt'
     enhancement_count=3,  # Generate 3 enhanced variants
     art_style="Modern scientific illustration with clean lines and professional colors",

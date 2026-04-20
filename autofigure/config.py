@@ -105,20 +105,20 @@ class Config:
     def _get_default_model(self, provider: str) -> str:
         """Get default model for a provider."""
         models = {
-            "openrouter": "anthropic/claude-sonnet-4",
-            "bianxie": "gemini-2.5-pro",
-            "gemini": "gemini-2.5-pro",
+            "openrouter": "google/gemini-3.1-pro-preview",
+            "bianxie": "gemini-3.1-pro-preview",
+            "gemini": "gemini-3.1-pro-preview",
         }
-        return models.get(provider, "anthropic/claude-sonnet-4")
+        return models.get(provider, "google/gemini-3.1-pro-preview")
 
     def _get_default_enhancement_model(self, provider: str) -> str:
         """Get default enhancement model for a provider."""
         models = {
-            "openrouter": "google/gemini-2.0-flash-exp:free",
-            "bianxie": "gemini-2.5-flash-image-preview",
-            "gemini": "gemini-2.0-flash-exp",
+            "openrouter": "google/gemini-3.1-flash-image-preview",
+            "bianxie": "gemini-3.1-flash-image-preview",
+            "gemini": "gemini-3.1-flash-image-preview",
         }
-        return models.get(provider, "google/gemini-2.0-flash-exp:free")
+        return models.get(provider, "google/gemini-3.1-flash-image-preview")
 
     def get_references(self) -> List[str]:
         """

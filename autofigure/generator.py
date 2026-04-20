@@ -32,17 +32,17 @@ CONFIG = {
     # OpenRouter
     'OPENROUTER_BASE_URL': 'https://openrouter.ai/api/v1',
     'OPENROUTER_API_KEY': '',
-    'OPENROUTER_MODEL': 'anthropic/claude-sonnet-4',
+    'OPENROUTER_MODEL': 'google/gemini-3.1-pro-preview',
 
     # Bianxie
     'BIANXIE_BASE_URL': 'https://api.bianxie.ai/v1',
     'BIANXIE_API_KEY': '',
-    'BIANXIE_CHAT_MODEL': 'gemini-2.5-pro',
+    'BIANXIE_CHAT_MODEL': 'gemini-3.1-pro-preview',
 
     # Gemini
     'GEMINI_BASE_URL': 'https://generativelanguage.googleapis.com/v1beta/openai/',
     'GOOGLE_API_KEY': '',
-    'GEMINI_MODEL': 'gemini-2.5-pro',
+    'GEMINI_MODEL': 'gemini-3.1-pro-preview',
 
     'SVG_WIDTH': 1333,             # SVG width
     'SVG_HEIGHT': 750,             # SVG height
@@ -70,15 +70,15 @@ def update_config_from_sdk(sdk_config) -> None:
     if provider == 'openrouter':
         CONFIG['OPENROUTER_API_KEY'] = sdk_config.generation_api_key
         CONFIG['OPENROUTER_BASE_URL'] = sdk_config.generation_base_url or 'https://openrouter.ai/api/v1'
-        CONFIG['OPENROUTER_MODEL'] = sdk_config.generation_model or 'anthropic/claude-sonnet-4'
+        CONFIG['OPENROUTER_MODEL'] = sdk_config.generation_model or 'google/gemini-3.1-pro-preview'
     elif provider == 'bianxie':
         CONFIG['BIANXIE_API_KEY'] = sdk_config.generation_api_key
         CONFIG['BIANXIE_BASE_URL'] = sdk_config.generation_base_url or 'https://api.bianxie.ai/v1'
-        CONFIG['BIANXIE_CHAT_MODEL'] = sdk_config.generation_model or 'gemini-2.5-pro'
+        CONFIG['BIANXIE_CHAT_MODEL'] = sdk_config.generation_model or 'gemini-3.1-pro-preview'
     elif provider == 'gemini':
         CONFIG['GOOGLE_API_KEY'] = sdk_config.generation_api_key
         CONFIG['GEMINI_BASE_URL'] = sdk_config.generation_base_url or 'https://generativelanguage.googleapis.com/v1beta/openai/'
-        CONFIG['GEMINI_MODEL'] = sdk_config.generation_model or 'gemini-2.5-pro'
+        CONFIG['GEMINI_MODEL'] = sdk_config.generation_model or 'gemini-3.1-pro-preview'
 
     # Pipeline settings
     CONFIG['MAX_ITERATIONS'] = sdk_config.max_iterations
@@ -116,7 +116,7 @@ def call_unified_llm(contents: List[Any], provider: Optional[str] = None,
     if actual_provider == 'gemini':
         # Gemini uses its own OpenAI-compatible endpoint
         actual_api_key = api_key or CONFIG.get('GOOGLE_API_KEY')
-        actual_model = model or CONFIG.get('GEMINI_MODEL') or 'gemini-2.5-pro'
+        actual_model = model or CONFIG.get('GEMINI_MODEL') or 'gemini-3.1-pro-preview'
         # Gemini OpenAI-compatible endpoint: https://generativelanguage.googleapis.com/v1beta/openai/
         actual_base_url = base_url or CONFIG.get('GEMINI_BASE_URL')
         if not actual_base_url:
@@ -2245,7 +2245,7 @@ if __name__ == "__main__":
         SELECTED_TOPIC = 'paper'
 
         print("LLM Provider: Bianxie (Only)")
-        print(f"Bianxie Model: {CONFIG.get('BIANXIE_CHAT_MODEL', 'gemini-2.5-pro')}")
+        print(f"Bianxie Model: {CONFIG.get('BIANXIE_CHAT_MODEL', 'gemini-3.1-pro-preview')}")
 
         content_config = CONTENT_CONFIGS[SELECTED_TOPIC]
         content_file = content_config['file']

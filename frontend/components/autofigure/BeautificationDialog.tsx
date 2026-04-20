@@ -252,10 +252,10 @@ export default function BeautificationDialog({
                                     value={config.imageGenModel}
                                     onChange={e => updateConfig({ imageGenModel: e.target.value })}
                                     placeholder={config.imageGenProvider === 'openrouter'
-                                        ? 'e.g., google/gemini-3-pro-image-preview'
+                                        ? 'e.g., google/gemini-3.1-flash-image-preview'
                                         : config.imageGenProvider === 'gemini'
-                                        ? 'e.g., gemini-3-pro-image-preview'
-                                        : 'e.g., gemini-3-pro-image-preview'}
+                                        ? 'e.g., gemini-3.1-flash-image-preview'
+                                        : 'e.g., gemini-3.1-flash-image-preview'}
                                     className="af-input"
                                 />
                             </div>
@@ -337,10 +337,10 @@ export default function BeautificationDialog({
                                         value={config.enhancementLlmModel}
                                         onChange={e => updateConfig({ enhancementLlmModel: e.target.value })}
                                         placeholder={config.enhancementLlmProvider === 'openrouter'
-                                            ? 'e.g., google/gemini-3-pro-preview'
+                                            ? 'e.g., google/gemini-3.1-pro-preview'
                                             : config.enhancementLlmProvider === 'gemini'
-                                            ? 'e.g., gemini-3-pro-preview'
-                                            : 'e.g., gemini-3-pro-preview'}
+                                            ? 'e.g., gemini-3.1-pro-preview'
+                                            : 'e.g., gemini-3.1-pro-preview'}
                                         className="af-input"
                                     />
                                 </div>

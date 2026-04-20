@@ -114,7 +114,7 @@ Note: On AWS (Lambda, EC2 with IAM role), credentials are automatically obtained
 
 ```bash
 OPENROUTER_API_KEY=your_api_key
-AI_MODEL=anthropic/claude-sonnet-4
+AI_MODEL=google/gemini-3.1-pro-preview
 ```
 
 Optional custom endpoint:
