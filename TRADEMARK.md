@@ -95,7 +95,7 @@ If AutoFigure materially helps a paper, report, or public figure artifact, we st
 See:
 
 - [README.md](./README.md)
-- [docs/en/26_CITATION_AND_ATTRIBUTION.md](./docs/en/26_CITATION_AND_ATTRIBUTION.md)
+- [CITATION_AND_ATTRIBUTION.md](./CITATION_AND_ATTRIBUTION.md)
 
 ### 8. Questions and permissions
 
