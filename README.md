@@ -170,6 +170,8 @@ python app.py
 ```powershell
 cd frontend
 $env:NEXT_PUBLIC_AUTOFIGURE_BACKEND_URL = "http://127.0.0.1:8796"
+# Optional: remote PDF-to-Markdown service. If unset, local browser extraction is used.
+# $env:PDF_API_URL = "https://your-pdf-service.example.com/pdf-to-markdown"
 npm run dev
 ```
 
@@ -182,6 +184,11 @@ Get-NetTCPConnection -LocalPort $ports -State Listen -ErrorAction SilentlyContin
     Select-Object -ExpandProperty OwningProcess -Unique |
     ForEach-Object { Stop-Process -Id $_ -Force }
 ```
+
+`PDF_API_URL` is optional. Configure it only if you have a remote service that
+accepts a `POST` form field named `pdf_file` and returns JSON with a `markdown`
+field. When it is not configured, uploaded PDFs are processed with local browser
+text extraction.
 
 #### Linux/MacOS
 
