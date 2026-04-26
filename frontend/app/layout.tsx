@@ -1,8 +1,21 @@
 import { GoogleAnalytics } from "@next/third-parties/google"
 import type { Metadata, Viewport } from "next"
+import { JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google"
 import { DiagramProvider } from "@/contexts/diagram-context"
 
 import "./globals.css"
+
+const plusJakarta = Plus_Jakarta_Sans({
+    variable: "--font-sans",
+    subsets: ["latin"],
+    weight: ["400", "500", "600", "700"],
+})
+
+const jetbrainsMono = JetBrains_Mono({
+    variable: "--font-mono",
+    subsets: ["latin"],
+    weight: ["400", "500"],
+})
 
 export const viewport: Viewport = {
     width: "device-width",
@@ -99,7 +112,9 @@ export default function RootLayout({
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
                 />
             </head>
-            <body className="antialiased">
+            <body
+                className={`${plusJakarta.variable} ${jetbrainsMono.variable} antialiased`}
+            >
                 <DiagramProvider>{children}</DiagramProvider>
             </body>
             {process.env.NEXT_PUBLIC_GA_ID && (
