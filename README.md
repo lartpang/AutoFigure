@@ -243,6 +243,24 @@ AutoFigure is highly configurable. You can set these in `Config()` or via enviro
 | **Bianxie**    | `api.bianxie.ai/v1`     | `gemini-3.1-pro-preview`        | `gemini-3.1-flash-image-preview`        |
 | **Google**     | `generativelanguage...` | `gemini-3.1-pro-preview`        | `gemini-3.1-flash-image-preview`        |
 
+### Third-Party API Compatibility
+
+AutoFigure can work with third-party model providers as long as their endpoint matches one of the supported API protocols:
+
+| Third-Party API Type               | Web UI Provider | Protocol          | Base URL Format                                                                                         |
+| ---------------------------------- | --------------- | ----------------- | ------------------------------------------------------------------------------------------------------- |
+| OpenAI-compatible chat/completions | Custom          | OpenAI Compatible | Base path such as `https://provider.example.com/v1`; AutoFigure appends `/chat/completions` when needed |
+| Gemini native generateContent      | Custom          | Gemini Native     | Base path ending at the Gemini API version, such as `https://provider.example.com/api/v1/gemini/v1beta` |
+
+For Gemini Native providers, do not include the model name in the model field's base URL. Endpoints ending in `/models` are normalized automatically, but the recommended input is the version-level base URL.
+For example, if a provider documents `https://provider.example.com/api/v1/gemini/v1beta/models`, enter:
+```text
+Provider: Custom
+Protocol: Gemini Native
+Base URL: https://provider.example.com/api/v1/gemini/v1beta
+Model: gemini-3.1-pro-preview
+```
+
 ### Web UI Model Mapping
 
 The web interface separates text/SVG generation models from image generation
